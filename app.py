@@ -169,4 +169,4 @@ if submit_button:
 
 # Footer
 st.markdown("---")
-st.markdown("Developed by xAI | Powered by Streamlit | Model Version: Logistic Regression (2025)")
+st.markdown("Developed by emma")
