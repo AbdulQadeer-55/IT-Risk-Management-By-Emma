@@ -1,0 +1,31 @@
+IT Project Risk Prediction Model Report
+==================================================
+
+Model: XGBoost with SMOTE + Undersampling
+Best Hyperparameters: {'classifier__learning_rate': 0.1, 'classifier__max_depth': 6, 'classifier__n_estimators': 200, 'classifier__subsample': 0.8}
+Optimal Threshold: 0.801
+Accuracy: 0.6067
+Cross-Validation Accuracy: 0.1643 (± 0.0008)
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.89      0.61      0.72     16784
+           1       0.23      0.60      0.33      3216
+
+    accuracy                           0.61     20000
+   macro avg       0.56      0.60      0.53     20000
+weighted avg       0.78      0.61      0.66     20000
+
+Top 10 Feature Importances:
+                        feature  importance
+13          industry_Technology    0.102760
+5              industry_Finance    0.097652
+12              industry_Retail    0.074093
+9        industry_Manufacturing    0.069405
+7           industry_Healthcare    0.067429
+10               industry_Media    0.047752
+17            methodology_Scrum    0.047594
+15      industry_Transportation    0.047016
+14  industry_Telecommunications    0.046085
+8            industry_Insurance    0.045917

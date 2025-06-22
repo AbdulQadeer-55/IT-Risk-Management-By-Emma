@@ -1,0 +1,72 @@
+RFE Feature Selection Results
+==================================================
+
+Selected Features (16):
+team_size
+complexity
+client_experience
+technical_risk
+communication_risk
+requirement_risk
+methodology_risk
+composite_risk_score
+budget_per_team_member
+duration_complexity_factor
+risk_assessment_variance
+experience_complexity_gap
+complexity_vendor_interaction
+team_stakeholder_ratio
+max_risk
+budget_duration_ratio
+
+Feature Rankings:
+                          Feature  Ranking  Importance
+0                       team_size        1    0.055433
+20                       max_risk        1    0.032521
+19         team_stakeholder_ratio        1    0.025206
+18  complexity_vendor_interaction        1    0.056714
+17      experience_complexity_gap        1    0.012344
+16       risk_assessment_variance        1    0.009096
+15     duration_complexity_factor        1    0.008867
+14         budget_per_team_member        1    0.007108
+13           composite_risk_score        1    0.082638
+11               methodology_risk        1    0.018602
+21          budget_duration_ratio        1    0.024498
+9                requirement_risk        1    0.021552
+8              communication_risk        1    0.000000
+7                  technical_risk        1    0.528375
+4               client_experience        1    0.008109
+3                      complexity        1    0.108938
+6               stakeholder_count        2    0.000000
+5               vendor_dependency        3    0.000000
+2                      log_budget        4    0.000000
+1                planned_duration        5    0.000000
+24                industry_Energy        6    0.000000
+10                    vendor_risk        7    0.000000
+25               industry_Finance        8    0.000000
+26            industry_Government        9    0.000000
+27            industry_Healthcare       10    0.000000
+12                     start_year       11    0.000000
+28             industry_Insurance       12    0.000000
+29         industry_Manufacturing       13    0.000000
+30                industry_Retail       14    0.000000
+31            industry_Technology       15    0.000000
+32    industry_Telecommunications       16    0.000000
+33             methodology_DevOps       17    0.000000
+34             methodology_Hybrid       18    0.000000
+35             methodology_Kanban       19    0.000000
+36               methodology_Lean       20    0.000000
+37              methodology_Scrum       21    0.000000
+38          methodology_Waterfall       22    0.000000
+39            budget_category_Low       23    0.000000
+40         budget_category_Medium       24    0.000000
+41      budget_category_Very High       25    0.000000
+42       duration_category_Medium       26    0.000000
+43        duration_category_Short       27    0.000000
+44      team_size_category_Medium       28    0.000000
+45       team_size_category_Small       29    0.000000
+23             risk_score_squared       30    0.000000
+22                    risk_spread       31    0.000000
+
+Preprocessed Feature Count: 46
+Selected Feature Count: 16

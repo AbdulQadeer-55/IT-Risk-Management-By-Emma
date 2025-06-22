@@ -1,0 +1,68 @@
+{
+  "dataset_info": {
+    "original_shape": [
+      2000,
+      29
+    ],
+    "final_shape": [
+      2000,
+      31
+    ],
+    "high_risk_percentage": 54.800000000000004,
+    "feature_count": 31,
+    "numerical_features": 25,
+    "categorical_features": 6
+  },
+  "feature_engineering": {
+    "original_features": 29,
+    "derived_features": 15,
+    "interaction_features": 5,
+    "polynomial_features": 6,
+    "encoded_features": 21,
+    "final_selected_features": 31,
+    "preprocessing_pipeline_ready": true
+  },
+  "top_features": [
+    {
+      "feature": "complexity_index",
+      "importance": 0.03495752160918523
+    },
+    {
+      "feature": "client_requirements_interaction",
+      "importance": 0.030040162647951597
+    },
+    {
+      "feature": "risk_readiness",
+      "importance": 0.02993972135084724
+    },
+    {
+      "feature": "client_engagement",
+      "importance": 0.029781663473630496
+    },
+    {
+      "feature": "team_efficiency",
+      "importance": 0.027618030874125888
+    },
+    {
+      "feature": "technology_maturity",
+      "importance": 0.027526695890940728
+    },
+    {
+      "feature": "technical_complexity_squared",
+      "importance": 0.02713351117820183
+    },
+    {
+      "feature": "budget_complexity_interaction",
+      "importance": 0.02671845036049045
+    },
+    {
+      "feature": "experience_complexity_interaction",
+      "importance": 0.02653891123567458
+    },
+    {
+      "feature": "requirements_clarity_log",
+      "importance": 0.026224671167595213
+    }
+  ],
+  "execution_time": "2025-06-17 00:51:53"
+}

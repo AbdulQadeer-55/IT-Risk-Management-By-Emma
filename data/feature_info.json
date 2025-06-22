@@ -1,0 +1,46 @@
+{
+  "final_features": [
+    "num__planned_budget",
+    "num__planned_duration",
+    "num__team_size",
+    "num__technical_complexity",
+    "num__stakeholder_count",
+    "num__budget_per_person",
+    "num__complexity_index",
+    "num__team_efficiency",
+    "num__stakeholder_density",
+    "num__timeline_pressure",
+    "num__budget_complexity_ratio",
+    "cat__methodology_Iterative",
+    "cat__methodology_Prototyping",
+    "cat__methodology_Spiral",
+    "cat__methodology_V-Model",
+    "cat__methodology_Waterfall",
+    "cat__project_type_Blockchain",
+    "cat__project_type_Cloud Migration",
+    "cat__project_type_Cybersecurity",
+    "cat__project_type_Data Analytics",
+    "cat__project_type_DevOps",
+    "cat__project_type_Enterprise Software",
+    "cat__project_type_IoT",
+    "cat__project_type_Mobile App",
+    "cat__project_type_Web Development"
+  ],
+  "numerical_features": [
+    "planned_budget",
+    "planned_duration",
+    "team_size",
+    "technical_complexity",
+    "stakeholder_count",
+    "budget_per_person",
+    "complexity_index",
+    "team_efficiency",
+    "stakeholder_density",
+    "timeline_pressure",
+    "budget_complexity_ratio"
+  ],
+  "categorical_features": [
+    "methodology",
+    "project_type"
+  ]
+}

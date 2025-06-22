@@ -1,0 +1,273 @@
+/* style.css - Elegant & Eye-Catching UI */
+
+/* Import optimized font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@500;600;700&display=swap');
+
+/* Modern color palette */
+:root {
+  /* Primary colors */
+  --primary: #4361ee;       /* Vibrant blue */
+  --primary-light: #4895ef; /* Lighter blue */
+  --primary-dark: #3a0ca3;  /* Deep blue */
+  
+  /* Secondary colors */
+  --secondary: #7209b7;     /* Purple */
+  --accent: #f72585;        /* Pink */
+  
+  /* Status colors */
+  --success: #4cc9f0;       /* Teal */
+  --warning: #f8961e;       /* Orange */
+  --danger: #ef233c;        /* Red */
+  
+  /* Neutrals */
+  --light: #f8f9fa;
+  --dark: #212529;
+  --gray-100: #f1f3f5;
+  --gray-200: #e9ecef;
+  --gray-500: #adb5bd;
+  --gray-800: #343a40;
+  
+  /* UI variables */
+  --border-radius: 10px;
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.08);
+  --shadow: 0 4px 12px rgba(0,0,0,0.1);
+  --shadow-md: 0 6px 16px rgba(0,0,0,0.12);
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Base styles */
+* {
+  font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
+}
+
+.stApp {
+  background-color: var(--light);
+  color: var(--dark);
+  line-height: 1.6;
+}
+
+/* Header with gradient */
+header {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  padding: 1.75rem 2rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow);
+}
+
+header h1 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+/* Sidebar with subtle texture */
+.sidebar {
+  background-color: white;
+  padding: 1.75rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--gray-200);
+  background-image: 
+    radial-gradient(circle at 1px 1px, var(--gray-200) 1px, transparent 0);
+  background-size: 10px 10px;
+}
+
+.sidebar h2 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.sidebar p {
+  color: var(--gray-800);
+  font-size: 0.95rem;
+}
+
+/* Cards with hover effect */
+.card {
+  background-color: white;
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--gray-200);
+  transition: var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.card h2 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--gray-200);
+}
+
+/* Typography */
+h1.text-center {
+  font-family: 'Manrope', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+h3.text-center {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--gray-800);
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+/* Enhanced form elements */
+.stTextInput>div>div>input,
+.stNumberInput>div>div>input,
+.stSelectbox>div>div>select {
+  border: 1px solid var(--gray-200);
+  border-radius: var(--border-radius);
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  transition: var(--transition);
+  background-color: var(--gray-100);
+}
+
+.stTextInput>div>div>input:focus,
+.stNumberInput>div>div>input:focus,
+.stSelectbox>div>div>select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+  outline: none;
+  background-color: white;
+}
+
+/* Beautiful buttons */
+.stButton>button {
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 0.875rem 1.75rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(67, 97, 238, 0.2);
+}
+
+.stButton>button:hover {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(67, 97, 238, 0.25);
+}
+
+/* Vibrant risk indicators */
+.risk-high {
+  background: linear-gradient(135deg, #ff6b6b, #ef233c);
+  color: white;
+  padding: 1.25rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  margin: 1.5rem 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.risk-medium {
+  background: linear-gradient(135deg, #ffb347, #f8961e);
+  color: white;
+  padding: 1.25rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  margin: 1.5rem 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.risk-low {
+  background: linear-gradient(135deg, #4cc9f0, #4895ef);
+  color: white;
+  padding: 1.25rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  margin: 1.5rem 0;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Attractive suggestions */
+.suggestion {
+  background-color: white;
+  padding: 1.25rem;
+  border-radius: var(--border-radius);
+  margin: 1rem 0;
+  font-size: 1rem;
+  border-left: 4px solid var(--success);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.suggestion::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(76, 201, 240, 0.05), transparent);
+  pointer-events: none;
+}
+
+.suggestion:hover {
+  transform: translateX(5px);
+  box-shadow: var(--shadow);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  header {
+    padding: 1.5rem;
+  }
+  
+  header h1 {
+    font-size: 1.7rem;
+  }
+  
+  .card {
+    padding: 1.5rem;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gray-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}

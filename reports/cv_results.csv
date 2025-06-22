@@ -1,0 +1,17 @@
+params,mean_f1_score,std_f1_score
+"{'classifier__learning_rate': 0.01, 'classifier__max_depth': 3, 'classifier__n_estimators': 100, 'classifier__subsample': 0.8}",0.33765058287680166,0.006632534551205642
+"{'classifier__learning_rate': 0.01, 'classifier__max_depth': 3, 'classifier__n_estimators': 100, 'classifier__subsample': 1.0}",0.3385745435336004,0.006141212743617447
+"{'classifier__learning_rate': 0.01, 'classifier__max_depth': 3, 'classifier__n_estimators': 200, 'classifier__subsample': 0.8}",0.3408150745580818,0.005813139697048134
+"{'classifier__learning_rate': 0.01, 'classifier__max_depth': 3, 'classifier__n_estimators': 200, 'classifier__subsample': 1.0}",0.3414439452396051,0.006765931312844114
+"{'classifier__learning_rate': 0.01, 'classifier__max_depth': 6, 'classifier__n_estimators': 100, 'classifier__subsample': 0.8}",0.34065129429223673,0.005795273293167721
+"{'classifier__learning_rate': 0.01, 'classifier__max_depth': 6, 'classifier__n_estimators': 100, 'classifier__subsample': 1.0}",0.3396392579862346,0.004979316160143212
+"{'classifier__learning_rate': 0.01, 'classifier__max_depth': 6, 'classifier__n_estimators': 200, 'classifier__subsample': 0.8}",0.3402851045925375,0.005943317047531967
+"{'classifier__learning_rate': 0.01, 'classifier__max_depth': 6, 'classifier__n_estimators': 200, 'classifier__subsample': 1.0}",0.33868554011670493,0.00432896164400159
+"{'classifier__learning_rate': 0.1, 'classifier__max_depth': 3, 'classifier__n_estimators': 100, 'classifier__subsample': 0.8}",0.33394956998734304,0.007225448315992127
+"{'classifier__learning_rate': 0.1, 'classifier__max_depth': 3, 'classifier__n_estimators': 100, 'classifier__subsample': 1.0}",0.33477803435849635,0.00583551126951439
+"{'classifier__learning_rate': 0.1, 'classifier__max_depth': 3, 'classifier__n_estimators': 200, 'classifier__subsample': 0.8}",0.3237845915974032,0.006806854812910032
+"{'classifier__learning_rate': 0.1, 'classifier__max_depth': 3, 'classifier__n_estimators': 200, 'classifier__subsample': 1.0}",0.32125630656448784,0.0065697960067005075
+"{'classifier__learning_rate': 0.1, 'classifier__max_depth': 6, 'classifier__n_estimators': 100, 'classifier__subsample': 0.8}",0.31091366957673316,0.0049829561734260185
+"{'classifier__learning_rate': 0.1, 'classifier__max_depth': 6, 'classifier__n_estimators': 100, 'classifier__subsample': 1.0}",0.31509022454430247,0.005764185269522478
+"{'classifier__learning_rate': 0.1, 'classifier__max_depth': 6, 'classifier__n_estimators': 200, 'classifier__subsample': 0.8}",0.29724890442428,0.0024040559261811127
+"{'classifier__learning_rate': 0.1, 'classifier__max_depth': 6, 'classifier__n_estimators': 200, 'classifier__subsample': 1.0}",0.2996794346700682,0.007473173042753044

@@ -1,0 +1,61 @@
+Preprocessing Configuration
+==================================================
+
+Numeric Features (24):
+team_size
+planned_duration
+log_budget
+complexity
+client_experience
+vendor_dependency
+stakeholder_count
+technical_risk
+communication_risk
+requirement_risk
+vendor_risk
+methodology_risk
+start_year
+composite_risk_score
+budget_per_team_member
+duration_complexity_factor
+risk_assessment_variance
+experience_complexity_gap
+complexity_vendor_interaction
+team_stakeholder_ratio
+max_risk
+budget_duration_ratio
+risk_spread
+risk_score_squared
+
+Categorical Features (5):
+industry
+methodology
+budget_category
+duration_category
+team_size_category
+
+Total Features After Preprocessing: 46
+
+Encoded Categorical Features (22):
+industry_Energy
+industry_Finance
+industry_Government
+industry_Healthcare
+industry_Insurance
+industry_Manufacturing
+industry_Retail
+industry_Technology
+industry_Telecommunications
+methodology_DevOps
+methodology_Hybrid
+methodology_Kanban
+methodology_Lean
+methodology_Scrum
+methodology_Waterfall
+budget_category_Low
+budget_category_Medium
+budget_category_Very High
+duration_category_Medium
+duration_category_Short
+team_size_category_Medium
+team_size_category_Small

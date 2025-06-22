@@ -1,0 +1,46 @@
+{
+  "dataset_shape": [
+    2000,
+    29
+  ],
+  "high_risk_count": 1096,
+  "high_risk_percentage": 54.800000000000004,
+  "top_risk_factors": {
+    "technical_complexity": 0.12209852132575648,
+    "requirements_clarity": -0.07684425724996165,
+    "team_experience_score": -0.07516855766475351,
+    "planned_budget": 0.05423342561328909,
+    "client_engagement": -0.05396639524927376
+  },
+  "feature_importance_top5": [
+    {
+      "feature": "technical_complexity",
+      "importance": 0.09213418824094731
+    },
+    {
+      "feature": "planned_budget",
+      "importance": 0.08851385898880933
+    },
+    {
+      "feature": "requirements_clarity",
+      "importance": 0.0867249070406388
+    },
+    {
+      "feature": "planned_duration",
+      "importance": 0.08592356827976495
+    },
+    {
+      "feature": "client_engagement",
+      "importance": 0.0857025878403716
+    }
+  ],
+  "insights": [
+    "\ud83d\udcca Overall high-risk rate: 54.8%",
+    "\ud83d\udd17 Strongest predictor: technical_complexity (correlation: 0.122)",
+    "\u26a0\ufe0f Riskiest methodology: Agile (59.6% risk rate)",
+    "\ud83c\udfaf Riskiest project type: AI/ML (58.4% risk rate)",
+    "\ud83d\udcb0 High-risk projects have 22.0% higher average budget",
+    "\u23f1\ufe0f High-risk projects have 3.2% longer average duration",
+    "\ud83d\udc65 Riskiest team experience level: Junior (63.2% risk rate)"
+  ]
+}

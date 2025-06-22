@@ -1,0 +1,2 @@
+Model,Accuracy,Precision,Recall,F1 Score,ROC AUC,PR AUC,Best Params
+Logistic Regression,0.585,0.5977859778597786,0.7397260273972602,0.6612244897959184,0.5891672342894625,0.621159969386758,"{'C': 0.1, 'class_weight': None, 'dual': False, 'fit_intercept': True, 'intercept_scaling': 1, 'l1_ratio': None, 'max_iter': 1000, 'multi_class': 'deprecated', 'n_jobs': None, 'penalty': 'l1', 'random_state': 42, 'solver': 'liblinear', 'tol': 0.0001, 'verbose': 0, 'warm_start': False}"
