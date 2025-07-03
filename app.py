@@ -380,4 +380,4 @@ if submit_button:
 # Footer
 with st.container():
     st.markdown("---")
-    st.markdown("**Developed by Emma** | Powered by Streamlit", unsafe_allow_html=True)
+    st.markdown("**Developed by Ayoola** | Powered by Streamlit", unsafe_allow_html=True)
