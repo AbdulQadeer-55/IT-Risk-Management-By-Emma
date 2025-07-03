@@ -14,38 +14,29 @@ warnings.filterwarnings('ignore', category=UserWarning)
 # Page configuration (must be the first Streamlit command)
 st.set_page_config(page_title="IT Project Risk Prediction System", layout="wide")
 
-# Custom CSS for colorful and modern design
+# Custom CSS for modern design
 st.markdown("""
 <style>
-    /* Main app styling with gradient background */
+    /* Main app styling */
     .main {
-        background: linear-gradient(135deg, #e0f7fa, #fff3e0);
+        background-color: #f5f7fa;
         padding: 20px;
-        border-radius: 15px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
     }
     
-    /* Header styling with vibrant color */
+    /* Header styling */
     h1 {
-        color: #1e90ff; /* Dodger Blue */
+        color: #2c3e50;
         font-family: 'Helvetica Neue', sans-serif;
         font-weight: 700;
         text-align: center;
-        background: linear-gradient(90deg, #ff7e5f, #feb47b);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
     }
     
     /* Subheader styling */
     h2, h3 {
-        color: #2c3e50;
+        color: #34495e;
         font-family: 'Helvetica Neue', sans-serif;
         font-weight: 600;
-        background-color: #f1c40f; /* Bright Yellow */
-        padding: 5px 10px;
-        border-radius: 5px;
-        display: inline-block;
     }
     
     /* Input fields */
@@ -53,39 +44,34 @@ st.markdown("""
         background-color: #ffffff;
         border-radius: 8px;
         padding: 10px;
-        border: 2px solid #3498db; /* Bright Blue border */
-        transition: border-color 0.3s;
-    }
-    .stNumberInput:focus, .stSelectbox:focus {
-        border-color: #e74c3c; /* Red focus effect */
+        border: 1px solid #dfe6e9;
     }
     
     /* Buttons */
     .stButton > button {
-        background: linear-gradient(90deg, #e74c3c, #e67e22); /* Red to Orange gradient */
+        background-color: #3498db;
         color: white;
-        border-radius: 10px;
-        padding: 12px 25px;
-        font-weight: 600;
+        border-radius: 8px;
+        padding: 10px 20px;
+        font-weight: 500;
         border: none;
-        transition: transform 0.2s, background 0.3s;
+        transition: background-color 0.3s;
     }
     .stButton > button:hover {
-        transform: scale(1.05);
-        background: linear-gradient(90deg, #c0392b, #d35400);
+        background-color: #2980b9;
     }
     
     /* Download button */
     .stDownloadButton > button {
-        background: linear-gradient(90deg, #2ecc71, #27ae60); /* Green gradient */
+        background-color: #2ecc71;
         color: white;
-        border-radius: 10px;
-        padding: 12px 25px;
-        font-weight: 600;
+        border-radius: 8px;
+        padding: 10px 20px;
+        font-weight: 500;
         border: none;
     }
     .stDownloadButton > button:hover {
-        background: linear-gradient(90deg, #27ae60, #219653);
+        background-color: #27ae60;
     }
     
     /* Error messages */
@@ -94,23 +80,20 @@ st.markdown("""
         color: #c0392b;
         border-radius: 8px;
         padding: 15px;
-        border-left: 5px solid #e74c3c;
     }
     
     /* Expander */
     .stExpander {
         background-color: #ffffff;
-        border-radius: 10px;
-        border: 2px solid #3498db;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        border: 1px solid #dfe6e9;
     }
     
     /* Table styling */
     .stTable {
         background-color: #ffffff;
-        border-radius: 10px;
+        border-radius: 8px;
         padding: 10px;
-        border: 2px solid #2ecc71;
     }
     
     /* General text */
@@ -165,23 +148,20 @@ if model is None or preprocessor is None or final_features is None:
     """)
     st.stop()
 
-# Initialize session state for dynamic preview
-if 'preview_data' not in st.session_state:
-    st.session_state['preview_data'] = {
-        'Planned Budget': 'Not set',
-        'Planned Duration': 'Not set',
-        'Team Size': 'Not set',
-        'Technical Complexity': 'Not set',
-        'Stakeholder Count': 'Not set',
-        'Methodology': 'Not set',
-        'Project Type': 'Not set'
-    }
-
 # Pre-dashboard for input preview
 with st.container():
     st.header("Pre-Dashboard: Input Preview")
     with st.expander("View Input Preview", expanded=True):
-        preview_df = pd.DataFrame([st.session_state['preview_data']])
+        preview_data = {
+            'Planned Budget': 'Not set',
+            'Planned Duration': 'Not set',
+            'Team Size': 'Not set',
+            'Technical Complexity': 'Not set',
+            'Stakeholder Count': 'Not set',
+            'Methodology': 'Not set',
+            'Project Type': 'Not set'
+        }
+        preview_df = pd.DataFrame([preview_data])
         st.table(preview_df)
 
 # Input form with whole numbers and tooltips
@@ -202,72 +182,66 @@ with st.container():
             budget_label = st.selectbox(
                 "Planned Budget Range",
                 options=[r[0] for r in budget_ranges],
-                help="Select the budget range in millions of dollars. This is the total planned budget for the project.",
-                key="budget_select"
+                help="Select the budget range in millions of dollars. This is the total planned budget for the project."
             )
             planned_budget = next(r[1] for r in budget_ranges if r[0] == budget_label)
-            st.session_state['preview_data']['Planned Budget'] = budget_label
 
             planned_duration = st.number_input(
                 "Planned Duration (weeks)",
                 min_value=4, max_value=6, value=4, step=2,
-                help="Enter the planned project duration in weeks (4-6 weeks, in steps of 2).",
-                key="duration_input"
+                help="Enter the planned project duration in weeks (4-6 weeks, in steps of 2)."
             )
-            st.session_state['preview_data']['Planned Duration'] = f"{planned_duration} weeks"
-
             team_size = st.number_input(
                 "Team Size",
                 min_value=5, max_value=50, value=10, step=1,
-                help="Enter the number of team members (5-50 people).",
-                key="team_size_input"
+                help="Enter the number of team members (5-50 people)."
             )
-            st.session_state['preview_data']['Team Size'] = team_size
-
             technical_complexity = st.number_input(
                 "Technical Complexity (1-10)",
                 min_value=1, max_value=10, value=5, step=1,
-                help="Rate the technical complexity of the project on a scale of 1 (simple) to 10 (highly complex).",
-                key="complexity_input"
+                help="Rate the technical complexity of the project on a scale of 1 (simple) to 10 (highly complex)."
             )
-            st.session_state['preview_data']['Technical Complexity'] = technical_complexity
-
             stakeholder_count = st.number_input(
                 "Stakeholder Count",
                 min_value=1, max_value=20, value=5, step=1,
-                help="Enter the number of stakeholders involved (1-20).",
-                key="stakeholder_input"
+                help="Enter the number of stakeholders involved (1-20)."
             )
-            st.session_state['preview_data']['Stakeholder Count'] = stakeholder_count
 
         with col2:
             methodology = st.selectbox(
                 "Methodology",
                 options=['Agile', 'Waterfall', 'Spiral', 'Iterative', 'V-Model', 'Prototyping'],
-                help="Select the project management methodology.",
-                key="methodology_select"
+                help="Select the project management methodology."
             )
-            st.session_state['preview_data']['Methodology'] = methodology
-
             project_type = st.selectbox(
                 "Project Type",
                 options=[
                     'Web Development', 'AI/ML', 'Cloud Migration', 'Mobile App', 'Data Analytics',
                     'Cybersecurity', 'DevOps', 'Blockchain', 'IoT', 'Enterprise Software'
                 ],
-                help="Select the type of IT project.",
-                key="project_type_select"
+                help="Select the type of IT project."
             )
-            st.session_state['preview_data']['Project Type'] = project_type
 
         submit_button = st.form_submit_button("Predict Risk")
 
-# Display updated preview after form interaction
-if 'preview_data' in st.session_state:
+        # Update preview data with formatted budget
+        preview_data.update({
+            'Planned Budget': budget_label,
+            'Planned Duration': f"{planned_duration} weeks",
+            'Team Size': team_size,
+            'Technical Complexity': technical_complexity,
+            'Stakeholder Count': stakeholder_count,
+            'Methodology': methodology,
+            'Project Type': project_type
+        })
+        preview_df = pd.DataFrame([preview_data])
+        st.session_state['preview_df'] = preview_df
+
+# Display updated preview
+if 'preview_df' in st.session_state:
     with st.container():
         with st.expander("View Input Preview", expanded=True):
-            preview_df = pd.DataFrame([st.session_state['preview_data']])
-            st.table(preview_df)
+            st.table(st.session_state['preview_df'])
 
 # Process inputs and predict
 if submit_button:
@@ -343,7 +317,7 @@ if submit_button:
                 # Pie chart for risk probabilities
                 labels = ['Low Risk', 'Medium Risk', 'High Risk']
                 sizes = risk_proba[0]
-                colors = ['#1e90ff', '#ff7e5f', '#feb47b']  # Vibrant colors
+                colors = ['#66b3ff', '#ffcc99', '#ff9999']
                 explode = (0.1 if risk_class == 'Low Risk' else 0, 
                           0.1 if risk_class == 'Medium Risk' else 0, 
                           0.1 if risk_class == 'High Risk' else 0)
@@ -359,7 +333,7 @@ if submit_button:
                     'Complexity': technical_complexity,
                     'Stakeholders': stakeholder_count
                 }
-                sns.barplot(x=list(key_features.values()), y=list(key_features.keys()), ax=ax2, palette='RdYlBu')
+                sns.barplot(x=list(key_features.values()), y=list(key_features.keys()), ax=ax2, palette='Blues_d')
                 ax2.set_title('Key Project Features', fontsize=14, pad=10)
                 ax2.set_xlabel('Value', fontsize=12)
                 ax2.set_ylabel('Feature', fontsize=12)
