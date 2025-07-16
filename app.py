@@ -14,7 +14,7 @@ warnings.filterwarnings('ignore', category=UserWarning)
 # Page configuration (must be the first Streamlit command)
 st.set_page_config(page_title="IT Project Risk Prediction System", layout="wide")
 
-# Custom CSS for modern design
+# Custom CSS for modern design with increased font sizes
 st.markdown("""
 <style>
     /* Main app styling */
@@ -22,6 +22,7 @@ st.markdown("""
         background-color: #f5f7fa;
         padding: 20px;
         border-radius: 10px;
+        font-size: 18px;
     }
     
     /* Header styling */
@@ -30,13 +31,22 @@ st.markdown("""
         font-family: 'Helvetica Neue', sans-serif;
         font-weight: 700;
         text-align: center;
+        font-size: 36px;
     }
     
     /* Subheader styling */
-    h2, h3 {
+    h2 {
         color: #34495e;
         font-family: 'Helvetica Neue', sans-serif;
         font-weight: 600;
+        font-size: 28px;
+    }
+    
+    h3 {
+        color: #34495e;
+        font-family: 'Helvetica Neue', sans-serif;
+        font-weight: 600;
+        font-size: 24px;
     }
     
     /* Input fields */
@@ -45,6 +55,7 @@ st.markdown("""
         border-radius: 8px;
         padding: 10px;
         border: 1px solid #dfe6e9;
+        font-size: 18px;
     }
     
     /* Buttons */
@@ -52,10 +63,11 @@ st.markdown("""
         background-color: #3498db;
         color: white;
         border-radius: 8px;
-        padding: 10px 20px;
+        padding: 12px 24px;
         font-weight: 500;
         border: none;
         transition: background-color 0.3s;
+        font-size: 18px;
     }
     .stButton > button:hover {
         background-color: #2980b9;
@@ -66,9 +78,10 @@ st.markdown("""
         background-color: #2ecc71;
         color: white;
         border-radius: 8px;
-        padding: 10px 20px;
+        padding: 12px 24px;
         font-weight: 500;
         border: none;
+        font-size: 18px;
     }
     .stDownloadButton > button:hover {
         background-color: #27ae60;
@@ -80,6 +93,7 @@ st.markdown("""
         color: #c0392b;
         border-radius: 8px;
         padding: 15px;
+        font-size: 18px;
     }
     
     /* Expander */
@@ -87,6 +101,7 @@ st.markdown("""
         background-color: #ffffff;
         border-radius: 8px;
         border: 1px solid #dfe6e9;
+        font-size: 18px;
     }
     
     /* Table styling */
@@ -94,12 +109,14 @@ st.markdown("""
         background-color: #ffffff;
         border-radius: 8px;
         padding: 10px;
+        font-size: 18px;
     }
     
     /* General text */
     body, p, div {
         font-family: 'Helvetica Neue', sans-serif;
         color: #2c3e50;
+        font-size: 18px;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -157,7 +174,7 @@ with st.container():
             'Planned Duration': 'Not set',
             'Team Size': 'Not set',
             'Technical Complexity': 'Not set',
-            'Stakeholder Count': 'Not set',
+            'Stakeholder Category': 'Not set',
             'Methodology': 'Not set',
             'Project Type': 'Not set'
         }
@@ -204,8 +221,15 @@ with st.container():
             stakeholder_count = st.number_input(
                 "Stakeholder Count",
                 min_value=1, max_value=20, value=5, step=1,
-                help="Enter the number of stakeholders involved (1-20)."
+                help="Enter the number of stakeholders involved (1-20). Categorized as: 1-10 (Small), 11-15 (Medium), 16-20 (Large)."
             )
+            # Categorize stakeholder count
+            if stakeholder_count <= 10:
+                stakeholder_category = 'Small'
+            elif stakeholder_count <= 15:
+                stakeholder_category = 'Medium'
+            else:
+                stakeholder_category = 'Large'
 
         with col2:
             methodology = st.selectbox(
@@ -230,7 +254,7 @@ with st.container():
             'Planned Duration': f"{planned_duration} weeks",
             'Team Size': team_size,
             'Technical Complexity': technical_complexity,
-            'Stakeholder Count': stakeholder_count,
+            'Stakeholder Category': stakeholder_category,
             'Methodology': methodology,
             'Project Type': project_type
         })
@@ -296,13 +320,14 @@ if submit_button:
                 risk_class = risk_class_map[risk_class_idx]
                 risk_proba_display = f"{risk_proba[0, risk_class_idx]:.2%}"
 
-                # Display results
+                # Display results with color coding
                 st.subheader("Risk Assessment")
                 col1, col2 = st.columns(2)
                 with col1:
                     st.markdown(f"**Risk Probability**: {risk_proba_display}")
                 with col2:
-                    st.markdown(f"**Risk Classification**: {risk_class}")
+                    color = '#2ecc71' if risk_class == 'Low Risk' else '#f1c40f' if risk_class == 'Medium Risk' else '#e74c3c'
+                    st.markdown(f"<span style='color: {color}; font-weight: bold;'>**Risk Classification**: {risk_class}</span>", unsafe_allow_html=True)
                 
                 # Model performance note
                 st.markdown("""
@@ -312,20 +337,20 @@ if submit_button:
 
                 # Visual report
                 st.subheader("Visual Report")
-                fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
+                fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 6))
                 
                 # Pie chart for risk probabilities
                 labels = ['Low Risk', 'Medium Risk', 'High Risk']
                 sizes = risk_proba[0]
-                colors = ['#66b3ff', '#ffcc99', '#ff9999']
+                colors = ['#2ecc71', '#f1c40f', '#e74c3c']  # Green, Yellow, Red
                 explode = (0.1 if risk_class == 'Low Risk' else 0, 
                           0.1 if risk_class == 'Medium Risk' else 0, 
                           0.1 if risk_class == 'High Risk' else 0)
-                ax1.pie(sizes, labels=labels, colors=colors, autopct='%1.1f%%', startangle=90, explode=explode)
+                ax1.pie(sizes, labels=labels, colors=colors, autopct='%1.1f%%', startangle=90, explode=explode, textprops={'fontsize': 14})
                 ax1.axis('equal')
-                ax1.set_title('Risk Probability Distribution', fontsize=14, pad=10)
+                ax1.set_title('Risk Probability Distribution', fontsize=16, pad=10)
                 
-                # Bar plot for key features
+                # Bar plot for key features with value labels
                 key_features = {
                     'Budget (M$)': planned_budget / 1000000,
                     'Duration (weeks)': planned_duration,
@@ -333,10 +358,13 @@ if submit_button:
                     'Complexity': technical_complexity,
                     'Stakeholders': stakeholder_count
                 }
-                sns.barplot(x=list(key_features.values()), y=list(key_features.keys()), ax=ax2, palette='Blues_d')
-                ax2.set_title('Key Project Features', fontsize=14, pad=10)
-                ax2.set_xlabel('Value', fontsize=12)
-                ax2.set_ylabel('Feature', fontsize=12)
+                bar_plot = sns.barplot(x=list(key_features.values()), y=list(key_features.keys()), ax=ax2, palette='Blues_d')
+                for index, value in enumerate(key_features.values()):
+                    bar_plot.text(value, index, f'{value}', color='black', ha="left", va="center", fontsize=14, x=value+0.1)
+                ax2.set_title('Key Project Features', fontsize=16, pad=10)
+                ax2.set_xlabel('Value', fontsize=14)
+                ax2.set_ylabel('Feature', fontsize=14)
+                ax2.tick_params(axis='both', labelsize=12)
                 
                 plt.tight_layout()
                 st.pyplot(fig)
@@ -344,11 +372,11 @@ if submit_button:
                 # Suggestions based on risk level
                 st.subheader("Project Suggestions")
                 if risk_class == 'Low Risk':
-                    st.success("Great job! Maintain current practices and consider scaling the project if needed.")
+                    st.markdown("<span style='color: #2ecc71;'>Great job! Maintain current practices and consider scaling the project if needed.</span>", unsafe_allow_html=True)
                 elif risk_class == 'Medium Risk':
-                    st.warning("Proceed with caution. Enhance risk monitoring and consider iterative reviews to mitigate issues.")
+                    st.markdown("<span style='color: #f1c40f;'>Proceed with caution. Enhance risk monitoring and consider iterative reviews to mitigate issues.</span>", unsafe_allow_html=True)
                 elif risk_class == 'High Risk':
-                    st.error("High risk detected. Reassess scope, reduce complexity, or switch to an Agile methodology with frequent feedback loops.")
+                    st.markdown("<span style='color: #e74c3c;'>High risk detected. Reassess scope, reduce complexity, or switch to an Agile methodology with frequent feedback loops.</span>", unsafe_allow_html=True)
 
                 # Save prediction result
                 result = {
@@ -360,6 +388,7 @@ if submit_button:
                     'team_size': team_size,
                     'technical_complexity': technical_complexity,
                     'stakeholder_count': stakeholder_count,
+                    'stakeholder_category': stakeholder_category,
                     'methodology': methodology,
                     'project_type': project_type
                 }
