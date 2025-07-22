@@ -319,11 +319,11 @@ if submit_button:
                     st.markdown(f"**Risk Probability**: {risk_proba_display}")
                 with col2:
                     if risk_class == 'Low Risk':
-                        st.markdown(f'<p style="color: green; font-weight: bold;">**Risk Classification**: {risk_class}</p>', unsafe_allow_html=True)
+                        st.markdown(f'<p style="color: green; font-weight: bold;">Risk Classification: {risk_class}</p>', unsafe_allow_html=True)
                     elif risk_class == 'Medium Risk':
-                        st.markdown(f'<p style="color: yellow; font-weight: bold;">**Risk Classification**: {risk_class}</p>', unsafe_allow_html=True)
+                        st.markdown(f'<p style="color: yellow; font-weight: bold;">Risk Classification: {risk_class}</p>', unsafe_allow_html=True)
                     elif risk_class == 'High Risk':
-                        st.markdown(f'<p style="color: red; font-weight: bold;">**Risk Classification**: {risk_class}</p>', unsafe_allow_html=True)
+                        st.markdown(f'<p style="color: red; font-weight: bold;">Risk Classification: {risk_class}</p>', unsafe_allow_html=True)
                 
                 # Model performance note
                 st.markdown("""
